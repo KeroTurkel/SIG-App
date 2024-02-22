@@ -11,6 +11,8 @@ import PrayerTimeCard from '../../components/PrayerTimeCard';
 import PrayerTimeCardMorning from '../../components/PrayerTimeCardMorning';
 import usePrayerTimes from '../../hooks/usePrayerTimes';
 
+import get99NamesOfAllah from '../../components/get99NamesOfAllah'
+
 
 export default function PrayTimeScreen({ navigation }) {
     const [isActive, setActive] = useState(false);
@@ -22,7 +24,7 @@ export default function PrayTimeScreen({ navigation }) {
     const [isActiveIsha, setActiveIsha] = useState(false);
     const [currentDate, setcurrentDate] = React.useState("");
 
-    const [selected, setSelected] = useState("Aarau");
+    const [selected, setSelected] = useState("");
     const { isLoading, data, error } = usePrayerTimes(selected); //usePrayerTimes (hook)
 
     const handleChange = useCallback((event) => {
@@ -46,9 +48,8 @@ export default function PrayTimeScreen({ navigation }) {
     //##########################################################
 
 
-    //data.data?.timings geht auch
-    /*während dem Laden sind keine Daten in timings vorhanden, daher 
-        gab es ein Fehler aus. */
+    //data.data?.timings
+   
 
     //Get content von API ##############################
     const getContent = (prayerTimesArray) => {
@@ -118,7 +119,8 @@ export default function PrayTimeScreen({ navigation }) {
                     setCurrentPrayerTime(prayerTimesArray[i]);
                 }
             }
-            console.log("current time", currentPrayerTime);
+            
+            
         }
     }, [time, data]);
 
@@ -163,6 +165,7 @@ export default function PrayTimeScreen({ navigation }) {
         { value: "Wetzikon", text: "Wetzikon" },
         { value: "Winterthur", text: "Winterthur" },
         { value: "Wohlen", text: "Wohlen" },
+        { value: "Zürich", text: "Zürich"},
 
     ];
     //######################################
@@ -189,15 +192,46 @@ export default function PrayTimeScreen({ navigation }) {
                 return "grey" ;
         }
     }
+
+    const [randomTransliteration, setRandomTransliteration] = useState("");
+    const [matchingMeaning, setMatchingMeaning] = useState("");
+
+
+      useEffect(() => {
+        const fetchRandomName = async () => {
+            try {
+                const randomNumber = Math.floor(Math.random() * 99) + 1; // Assuming there are 99 names
+                const transliteration = await get99NamesOfAllah(randomNumber);
+    
+                // Check if transliteration exists before accessing its properties
+                if (transliteration && transliteration.transliteration) {
+                    setRandomTransliteration(transliteration.transliteration || "No Name Available");
+                    setMatchingMeaning(transliteration.meaning || "No Meaning Available");
+                } else {
+                    setRandomTransliteration("No Name Available");
+                    setMatchingMeaning("No Meaning Available");
+                }
+            } catch (error) {
+                console.error('Error fetching random name:', error.message);
+            }
+        };
+    
+        fetchRandomName();
+    }, []);
+    
+
+    //<Text style={styles.date}>{currentDate}  </Text>
    
     return (
 
-        <View style={{ flex: 1, alignItems: "center", marginTop: 40 }}>
+        <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
 
-            <View >
-                <Text style={styles.date}>{currentDate}  </Text>
-                <Text> CurrentTime: {time.toLocaleTimeString()}</Text>
-                <Text> PrayerTime:   {getContent(prayerTimesArray[5])}</Text>
+            <View>
+            <Text style={styles.name_99}>{randomTransliteration}</Text>
+            <Text style={styles.meaning}>{matchingMeaning}</Text>
+                
+                
+                
             </View>
 
             <View style={[styles.dropDownList, styles.textTimeName]}>
@@ -212,7 +246,7 @@ export default function PrayTimeScreen({ navigation }) {
                     dropdwonBoxStyles={{ borderColor: "#ffffff" }}
                     boxStyles={styles.dropdownBoxStyle} //Ausgewählte ortschaft angezeigt, wird überschrieben
                     textStyles={{ fontSize: 20 }}
-                    option={{ value: "Aarau", text: "Wähle ein Ort aus." }}
+                    option={{ value: "Basel", text: "Basel" }}
 
                 />
 
@@ -242,8 +276,7 @@ export default function PrayTimeScreen({ navigation }) {
 const styles = StyleSheet.create({
 
     date: {
-        fontSize: 50,
-        marginTop: "10%",
+        fontSize: 20,
         color: "#274546",
         fontFamily: 'K2D_400Regular',
     },
@@ -267,6 +300,20 @@ const styles = StyleSheet.create({
 
     textTimeName: {
         fontSize: "15px", fontFamily: 'K2D_400Regular', color: "#274546",
+    },
+
+    name_99:{
+        
+        fontSize: 30,
+        alignContent: 'center',
+        textAlign: "center",
+    },
+
+    meaning: {
+        fontSize: 20,
+        alignContent: 'center',
+        textAlign: "center",
+        marginBottom: 10,
     }
 
 

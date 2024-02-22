@@ -7,16 +7,16 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 //<Text style={styles.textButton}>{title}</Text>
 
 
-export default function VeransstalltungenScreen({ navigation }) {
+export default function CourseScreen({ navigation }) {
 
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
 
             <ScrollView style={styles.scrollview}>
 
-                <View style={{ alignItems: "center", width: "100%", height: "100%", marginTop: "20%", marginBottom: "5%" }}>
+                <View style={{ alignItems: "center", width: "100%", height: "100%", marginTop: "10%", marginBottom: "5%" }}>
 
-
+                <Text style={styles.titleStyle}>Kurse</Text>
 
                     <View style={styles.card2}>
                         <View style={styles.containerInside}>
@@ -175,6 +175,13 @@ export default function VeransstalltungenScreen({ navigation }) {
 
 
 const styles = StyleSheet.create({
+    
+    titleStyle:{
+        marginBottom: "5%",
+        marginTop: "8%",
+        fontSize: 30,
+    },
+    
     card: {
         width: "90%",
         height: 320,
@@ -192,8 +199,12 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 16,
         backgroundColor: "#ffffff",
-        alignSelf: "center" /**ScrollView hatte verschoben mit alignSelf korrigiert */
-
+        alignSelf: "center",/**ScrollView hatte verschoben mit alignSelf korrigiert */
+        shadowColor: 'grey',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.9,
+        shadowRadius: 8,
+        elevation: 6,
     },
 
     containerInside: {

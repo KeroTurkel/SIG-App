@@ -1,26 +1,55 @@
-import * as React from 'react';
+// App.js
+import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import StartScreen from './navigation/screens/StartScreen';
 import MainContainer from './navigation/MainContainer';
-import Navigation2 from './navigation/Navigation_2';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Platform } from 'react-native';
+import EventDetailScreen from './navigation/screens/EventDetailScreen';
+import AllEventList from './navigation/screens/AllEventList';
 
-/*const majorVersionIOS = parseInt(Platform.Version, 10);
-if (majorVersionIOS <= 9) {
-  console.log('Work around a change in behavior');
-}*/
+const Stack = createNativeStackNavigator();
 
+function App() {
+  const [isAppLoading, setAppLoading] = useState(true);
 
-function App(){
-  return(
-    <SafeAreaView>
-      <MainContainer/>
-      <Navigation2/>
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAppLoading(false);
+    }, 5000); // 5000 milliseconds (5 seconds)
 
-      
-    </SafeAreaView>
- 
+    return () => clearTimeout(timeout); // Cleanup on unmount
+  }, []);
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Start">
+        {isAppLoading ? (
+          <Stack.Screen
+            name="Start"
+            component={StartScreen}
+            options={{ headerShown: false }}
+          />
+        ) : (
+          <Stack.Screen
+            name="MainContainer"
+            component={MainContainer}
+            options={{ headerShown: false }}
+          />
+        )}
+        <Stack.Screen
+            name="EventDetailScreen"
+            component={EventDetailScreen}
+            options={{ headerShown: false }}
+          />
+        <Stack.Screen
+            name="AllEventList"
+            component={AllEventList}
+            options={{ headerShown: true }}
+          />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
 
 export default App;
