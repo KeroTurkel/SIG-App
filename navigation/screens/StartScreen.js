@@ -4,16 +4,16 @@ import {View, StyleSheet, Text, Image} from "react-native";
 const StartScreen = ({ navigation }) => {
     useEffect(() => {
       const timeout = setTimeout(() => {
-        // Navigate to the main part of your app (replace 'MainContainer' with your main screen's name)
+      
         
-      }, 2500); // 5000 milliseconds (5 seconds)
+      }, 2500); // (5 seconds)
   
-      return () => clearTimeout(timeout); // Cleanup on unmount
+      return () => clearTimeout(timeout); 
     }, [navigation]);
   
     return (
       <View style={styles.container}>
-        {/* Your app logo */}
+      
         <Image
           source={require('../screens/img/SIG_logo.png')}
           style={styles.logo}
@@ -29,8 +29,8 @@ const StartScreen = ({ navigation }) => {
       alignItems: 'center',
     },
     logo: {
-      width: 300, // Adjust the size as needed
-      height: 300, // Adjust the size as needed
+      width: 300, 
+      height: 300, 
       resizeMode: 'contain',
     },
   });

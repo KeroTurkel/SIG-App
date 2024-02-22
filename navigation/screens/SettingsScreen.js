@@ -114,8 +114,8 @@ const styles = StyleSheet.create ({
     },
 
     switch: {
-        transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }], // Anpassung der Größe
-        alignSelf: 'flex-end', // Optional: Ausrichtung anpassen
+        transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }], 
+        alignSelf: 'flex-end', 
         
       },
 

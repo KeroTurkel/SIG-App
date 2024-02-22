@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAppLoading(false);
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 5000); 
 
     return () => clearTimeout(timeout); // Cleanup on unmount
   }, []);

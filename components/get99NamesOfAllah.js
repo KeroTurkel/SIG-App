@@ -7,7 +7,7 @@ const get99NamesOfAllah = async (number) => {
 
     const data = await response.json();
     if (data.code === 200 && data.status === 'OK') {
-      const name = data.data[0]; // Assuming the API returns an array with a single name
+      const name = data.data[0]; 
       console.log(name.transliteration);
       return {
         transliteration: name.transliteration,
@@ -21,5 +21,5 @@ const get99NamesOfAllah = async (number) => {
   }
 };
 
-export default get99NamesOfAllah;  // Removed the function call ()
+export default get99NamesOfAllah;  
 

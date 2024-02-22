@@ -9,7 +9,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 const EventDetailScreen = ({ navigation }) => {
 
   useEffect(() => {
-    const isDarkBackground = true; // Change this based on your logic
+    const isDarkBackground = true; 
     StatusBar.setBarStyle(isDarkBackground ? 'light-content' : 'dark-content');
   }, []);
 
@@ -24,7 +24,7 @@ const EventDetailScreen = ({ navigation }) => {
   const [isBellPressed, setIsBellPressed] = useState(false);
 
   const onPressBellButton = () => {
-    // Handle bell button press
+   
     setIsBellPressed(!isBellPressed);
   };
   

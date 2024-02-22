@@ -200,10 +200,10 @@ export default function PrayTimeScreen({ navigation }) {
       useEffect(() => {
         const fetchRandomName = async () => {
             try {
-                const randomNumber = Math.floor(Math.random() * 99) + 1; // Assuming there are 99 names
+                const randomNumber = Math.floor(Math.random() * 99) + 1;
                 const transliteration = await get99NamesOfAllah(randomNumber);
     
-                // Check if transliteration exists before accessing its properties
+               
                 if (transliteration && transliteration.transliteration) {
                     setRandomTransliteration(transliteration.transliteration || "No Name Available");
                     setMatchingMeaning(transliteration.meaning || "No Meaning Available");

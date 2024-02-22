@@ -10,10 +10,10 @@ function EventScreen2() {
 
 
   useEffect(() => {
-    // Check your background color condition, here assuming a dark background
-    const isDarkBackground = false; // Change this based on your logic
+
+    const isDarkBackground = false;
   
-    // Set barStyle based on background color
+   
     StatusBar.setBarStyle(isDarkBackground ? 'light-content' : 'dark-content');
   }, []);
 

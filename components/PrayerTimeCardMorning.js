@@ -69,7 +69,7 @@ const styles = StyleSheet.create ({
     },
 
     timeContainer: {
-        borderRadius: 10, // abgerundete Ecken für den Zeitcontainer
+        borderRadius: 10, 
         alignSelf: 'flex-start',
         paddingLeft: 1,
         paddingRight: 5,
