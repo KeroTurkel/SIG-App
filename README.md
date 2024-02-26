@@ -1,6 +1,6 @@
 # SIG-App
 
-App-Video: https://youtube.com/shorts/rOrXeMt-Nzw?feature=share 
+App-Video: https://youtu.be/kxnZXdg4LAc
 
 Die App für die Schweizerische islamische Gemeinschaft befindet sich noch in der Entwicklung, aber der größte Teil der Gebetszeitenseite wurde bereits umgesetzt. Die App ermöglicht den Benutzern der Gemeinschaft, die fünf Gebetszeiten einzusehen, die je nach Ortschaft unterschiedlich sind. Die Gebetszeiten werden übersichtlich dargestellt, und wenn eine der fünf Gebetszeiten ansteht, wird der entsprechende Block mit einem grünen Rand und einem gelben Sonnenicon hervorgehoben, um anzuzeigen, welches Gebet aktuell ist.
 
